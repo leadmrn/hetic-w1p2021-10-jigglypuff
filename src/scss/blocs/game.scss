@@ -1,0 +1,75 @@
+@keyframes move-to-left {
+  from {
+    transform: translateX(1200px)
+  } to {
+    transform: translateX(-100px)
+  }
+}
+
+.game__square {
+  width: 100px;
+}
+
+.game__score {
+  opacity: 0.5; 
+  font-size: 200px;
+  height: 100vh;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left:700px;
+  z-index: -1;
+}
+ 
+
+.game__img{
+  height: 100px;
+  position: absolute;
+  left:100px;
+  z-index: 100;
+}
+
+
+.game__wall{
+  width: 100px;
+  height: 800px;
+  position: absolute;
+  animation: move-to-left 5s linear forwards;
+  z-index: 1;
+}
+
+.game__bonus {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  z-index: 2;
+}
+.game__bonus--up {
+  background-color: green;
+}
+
+.game__bonus--down {
+  background-color: black;
+}
+
+.game__bonus--left {
+  background-color: yellow;
+}
+
+.game__bonus--right {
+  background-color: blue;
+}
+
+.game__bonus--none {
+  display: none;
+}
+
+.game__obstacle{
+  width: 100px;
+  height: 100px;
+  background-color:red;
+  position: absolute;
+  z-index: 2;
+}
