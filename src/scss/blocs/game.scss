@@ -21,6 +21,7 @@ body{
 }
 
 .game__score {
+  width: 1200px;
   opacity: 0.5; 
   font-size: 200px;
   height: 100vh;
@@ -29,7 +30,6 @@ body{
   align-items: center;
   justify-content: center;
   position: absolute;
-  left:600px;
   z-index: -1;
 }
  
@@ -62,7 +62,7 @@ body{
 }
 
 .game__bonus--right {
-  background-color: green;
+  background: url('/pictures/cristalball.png');
 }
 
 .game__bonus--none {
