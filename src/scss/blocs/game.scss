@@ -1,13 +1,23 @@
 @keyframes move-to-left {
   from {
-    transform: translateX(1200px)
+    transform: translateX(1100px)
   } to {
     transform: translateX(-100px)
   }
 }
 
+body{
+  background-image: url('/pictures/Game.jpg');
+}
+
 .game__square {
-  width: 100px;
+  width: 70px;
+  height: 50px;
+  left: 100px;
+  z-index: 100;
+  position: absolute;
+  background: url('https://cdn2.scratch.mit.edu/get_image/user/31539865_60x60.png') no-repeat;
+  background-size: 80px;
 }
 
 .game__score {
@@ -19,17 +29,10 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  left:700px;
+  left:600px;
   z-index: -1;
 }
  
-
-.game__img{
-  height: 100px;
-  position: absolute;
-  left:100px;
-  z-index: 100;
-}
 
 
 .game__wall{
@@ -47,19 +50,19 @@
   z-index: 2;
 }
 .game__bonus--up {
-  background-color: green;
+  background: url('/pictures/Cristalballup.png');
 }
 
 .game__bonus--down {
-  background-color: black;
+  background: url('/pictures/Cristalballdown.png');
 }
 
 .game__bonus--left {
-  background-color: yellow;
+  background: url('/pictures/Cristalballleft.png');
 }
 
 .game__bonus--right {
-  background-color: blue;
+  background-color: green;
 }
 
 .game__bonus--none {
@@ -69,7 +72,11 @@
 .game__obstacle{
   width: 100px;
   height: 100px;
-  background-color:red;
+  background: url('/pictures/Energyball.png');
   position: absolute;
   z-index: 2;
+}
+
+.game__music{
+  position: absolute;
 }
