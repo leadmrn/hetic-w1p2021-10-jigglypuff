@@ -1,39 +1,32 @@
-var goku
-var intervalWall;
+let goku;
+let intervalWall;
 
 oxo.inputs.listenKey('enter', function() {
   if (oxo.screens.getCurrentScreen !== 'game') {
-
+      oxo.inputs.cancelKeyListener('enter');
       oxo.screens.loadScreen('game',function(){
       let tabRecupElements = [];
       let tabAnswerUser = [];
 
-      var obstacleSize = 100;
-      var speed = 100;
+      let obstacleSize = 100;
+      let speed = 100;
       goku = document.querySelector(".game__square");
       
       
-      var timerInterval = setInterval(timer , 1000);
+      let timerInterval = setInterval(timer , 1000);
 
       function timer() {
-        if(oxo.player.getScore() > 300 ){
-          end();
-          oxo.player.setScore(0);
+        if(oxo.player.getScore() === 10 ){
+          oxo.screens.loadScreen('end');
         }else{
-          this.oxo.player.addToScore(1);
-      };
-       
-      function end() {
-        oxo.screens.loadScreen('end');
-        oxo.player.setScore(0);
-        clearInterval(timer)
-       };
+          oxo.player.addToScore(1);
+        };
       }; 
 
       
       
-      var wallNumber = 1;
-      intervalWall =setInterval(addWall, speed*20);
+      let wallNumber = 1;
+      intervalWall = setInterval(addWall, speed*20);
       
       function addWall() {
 
@@ -47,7 +40,7 @@ oxo.inputs.listenKey('enter', function() {
         let none = 'none'
         let tabDisplay = [arrowrand , arrowrand , none]
         
-        var wall = oxo.elements.createElement({
+        let wall = oxo.elements.createElement({
           type: 'div',
           class: 'game__wall game__wall--' + wallNumber,
           styles: {
@@ -94,6 +87,7 @@ oxo.inputs.listenKey('enter', function() {
                           console.log(tabAnswerUser);
                           if (tabAnswerUser.length == 7) {
                             if(tabAnswerUser.join("") == tabRecupElements.join("")) {
+                              oxo.player.getScore();
                               oxo.screens.loadScreen('succes', function() {
                                 //script de succès ici
                               })
@@ -213,8 +207,7 @@ oxo.inputs.listenKey('enter', function() {
                 tabRecupElements = [];
               });
             });
-            
-          }
+          };
         };
         wallNumber++;
       };
