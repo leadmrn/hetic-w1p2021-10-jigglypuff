@@ -1,3 +1,38 @@
 .succes{
   background-image: url('/pictures/backgroundgameover.jpg');
-}
+ }
+ @keyframes move-to-right{
+  0% { top: 360; left: 500; }
+  50% { top: 250px; left : 600px}
+  80% { left: 200px; top: 650px }
+  100% { top: 10px; left: 100%; }
+  }
+ 
+  .titel__win{
+    padding-top: 150px;
+    text-align: center;
+    margin: auto;
+   }
+
+ .animation__win {
+    width: 100px;
+    height: 80px;
+    background: url('/pictures/goku_fly.gif');
+    position: absolute;
+    left: 550px;
+    top: 360px;
+    animation: move-to-right 2s linear forwards;
+ }
+ .header__subtitle--succes{
+  margin-top: 400px;
+  border: 2px solid black;
+  background-color: rgb(255, 128, 0);
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  font-size: 20px;
+  font-family: "Press Start 2P";
+  text-align: center;
+ }
+ 
