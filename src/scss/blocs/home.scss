@@ -1,3 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
 .home{
   background-image: url('/pictures/BackgroundHome.png') 
+}
+
+.header__title{
+  margin-top: 50px;
+  font-size: 60px;
+  font-family: "Press Start 2P";
+  text-align: center;
+}
+
+.header__titleJapanese{
+  margin-top: 20px;
+  font-size: 40px;
+  font-family: "Press Start 2P";
+  text-align: center;
+}
+
+.header__subtitle{
+  border: 2px solid black;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: "Press Start 2P";
+  text-align: center;
+}
+
+.selectPerso__perso1{
+  width: 200px;
+  height: 200px;
+  background-color: purple;
+  position: absolute;
+  bottom: 250px;
+  left: 300px;
+}
+
+.selectPerso__perso2{
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+  position: absolute;
+  bottom: 250px;
+  right: 300px;
 }

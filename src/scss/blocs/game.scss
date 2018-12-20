@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
 @keyframes move-to-left {
   from {
     transform: translateX(1100px)
@@ -24,22 +26,22 @@
   animation: backgroundScroll 9999s linear infinite;
 }
 
-.game__square {
-  width: 70px;
-  height: 50px;
+.game__square{
+  width: 80px;
+  height: 60px;
   left: 100px;
   z-index: 100;
   position: absolute;
-  background: url('https://cdn2.scratch.mit.edu/get_image/user/31539865_60x60.png') no-repeat;
+  background: url('/pictures/goku_fly.gif') no-repeat;
   background-size: 80px;
 }
 
 .game__score {
   width: 1200px;
   opacity: 0.5; 
-  font-size: 200px;
+  font-size: 100px;
   height: 100vh;
-  font-family: monospace;
+  font-family: 'Press Start 2P';
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +88,7 @@
 .game__obstacle{
   width: 100px;
   height: 100px;
-  background: url('/pictures/Energyball.png');
+  background: url('/pictures/finalenergyball.png');
   position: absolute;
   z-index: 2;
 }
