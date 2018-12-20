@@ -1,3 +1,67 @@
+
+
 .gameover{
   background-image: url('/pictures/backgroundgameover.jpg');
-}
+ }
+ .titel{
+  width: 100%;
+  height: 25vh;
+  color: white;
+  align-items: center;
+  font-size: 80px;
+ }
+ .titel__gameover{
+  padding-top: 150px;
+  text-align: center;
+  margin: auto;
+ }
+ 
+ .explosion{
+  position: absolute;
+  background-image: url('https://i.gifer.com/3iCN.gif');
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+ }
+ 
+ .explosion--1{
+  top: 350px;
+  left: 500px;
+  width: 80px;
+  height: 80px;
+ }
+ 
+ .explosion--2{
+  top: 450px;
+  left:650px;
+  width: 80px;
+  height: 80px;
+ }
+ 
+ .explosion--3{
+  top:400px;
+  left:400px; 
+  width: 100px;
+  height: 100px;
+ }
+ 
+ .explosion--4{
+  top:200px;
+  left:600px;
+  width: 180px;
+  height: 180px;
+ }
+ 
+ .header__subtitle--gameover{
+  margin-top: 400px;
+  border: 2px solid black;
+  background-color: rgb(255, 128, 0);
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  font-size: 20px;
+  font-family: "Press Start 2P";
+  text-align: center;
+ }
+ 

@@ -82,14 +82,14 @@ let appearText;
 let colectBall;
 let colisionWall;
 
-function launchGame(data) {
+function launchGame(fly) {
   oxo.inputs.listenKey('enter', function() {
     if (oxo.screens.getCurrentScreen !== 'game') {
         oxo.inputs.cancelKeyListener('enter');
         oxo.screens.loadScreen('game',function(){
         oxo.player.setScore(300);
         perso = document.querySelector("#perso");
-        perso.classList.add(data.persoClass);      
+        perso.classList.add(fly.persoClass);      
         setInterval(timer , 1000);
         function timer() {
           if(oxo.player.getScore() == 0 ){
@@ -167,7 +167,7 @@ function launchGame(data) {
                     console.log(tabRecupElements);
                     checkAnswer();
                   };
-                  perso.classList.add(data.persoClass);      };
+                  perso.classList.add(fly.persoClass);      };
                 if(bonus.className == 'game__bonus game__bonus--left'){
                   leftValue = 'left';
                   if(tabRecupElements.length < 7){
@@ -202,7 +202,7 @@ function launchGame(data) {
                   perso = document.querySelector("#perso");
                   tabRecupElements = [];
                   perso = document.querySelector("#perso");
-                  perso.classList.add(data.persoClass); 
+                  perso.classList.add(fly.persoClass); 
                 });
               });
             };
@@ -223,7 +223,6 @@ oxo.screens.loadScreen('home', function() {
     perso1 = document.getElementById('perso1');
     perso2 = document.getElementById('perso2');
     if(key === "down"){
-      console.log('down');
       appearText.classList.toggle('is-clicked');
     }
     if(key === "left"){
