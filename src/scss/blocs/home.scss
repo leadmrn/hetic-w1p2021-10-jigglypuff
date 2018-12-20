@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
+
 .home{
   background-image: url('/pictures/BackgroundHome.png') 
 }
@@ -12,7 +13,7 @@
 }
 
 .header__titleJapanese{
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 40px;
   font-family: "Press Start 2P";
   text-align: center;
@@ -20,27 +21,80 @@
 
 .header__subtitle{
   border: 2px solid black;
+  background-color: rgb(255, 128, 0);
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 10px;
-  margin-top: 20px;
+  margin-top: 40px;
   font-size: 20px;
   font-family: "Press Start 2P";
   text-align: center;
 }
 
 .selectPerso__perso1{
+  z-index: 50;
   width: 200px;
   height: 200px;
-  background-color: purple;
+  background-color: blue;
   position: absolute;
   bottom: 250px;
   left: 300px;
 }
 
 .selectPerso__perso2{
+  z-index: 50;
   width: 200px;
   height: 200px;
-  background-color: blue;
+  background: url('/pictures/freezer_standing.gif');
   position: absolute;
   bottom: 250px;
   right: 300px;
+}
+
+.instructions__button{
+  border: 2px solid black;
+  background-color: rgb(255, 128, 0);
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  font-size: 15px;
+  font-family: "Press Start 2P";
+  text-align: center;
+  position: absolute;
+  left: 425px;
+  bottom: 70px;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1000;
+  width: 500px;
+  background-color: black;
+  padding: 30px;
+  transform: translate(320px , -750px);
+  transition: transform 1s;
+}
+
+.content__text{
+  font-family: 'Press Start 2P';
+  color: white;
+  font-family: 20px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.content__picture{
+  width: 300px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.is-clicked{
+  transform: translate(320px, -100px)
 }

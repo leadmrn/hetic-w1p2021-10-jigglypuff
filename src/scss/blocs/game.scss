@@ -32,8 +32,16 @@
   left: 100px;
   z-index: 100;
   position: absolute;
-  background: url('/pictures/goku_fly.gif') no-repeat;
-  background-size: 80px;
+
+  &.game__square--goku {
+    background: url('/pictures/goku_fly.gif') no-repeat;
+    background-size: 80px;
+  }
+
+  &.game__square--vegeta{
+    background: url('/pictures/vegeta.gif') no-repeat;
+    background-size: 80px;
+  }
 }
 
 .game__score {
