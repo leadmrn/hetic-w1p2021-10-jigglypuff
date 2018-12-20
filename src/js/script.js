@@ -1,10 +1,29 @@
+let perso;
+let intervalWall;
+let bodyGamefreezer;
+let freezerGif;
+let gokuGif;
+let freezerAttackGif;
+let gokuAttackGif;
+let tabRecupElements = [];
+let tabAnswerUser = [];
+let obstacleSize = 100;
+let speed = 100;
+let perso1;
+let perso2;
+let howPlay;
+let appearText;
+let colectBall;
+
 function checkAnswer() {
   if(tabRecupElements.length === 7){
     oxo.screens.loadScreen('gamefreezer', function() {
+      oxo.inputs.cancelKeyListener('enter');
+      perso = document.querySelector("#perso");
       gokuGif = document.getElementById('gokuGif');
+      gokuAttackGif = document.getElementById('gokuAttackGif');
       freezerGif = document.getElementById('freezerGif');
       freezerAttackGif = document.getElementById('freezerAttackGif');
-      gokuAttackGif = document.getElementById('gokuAttackGif');
       clearInterval(intervalWall);
       oxo.inputs.listenArrowKeys(function(key) {
         if(key === 'up'){
@@ -45,6 +64,7 @@ function checkAnswer() {
               gokuAttackGif.classList.add('gamefreezer__gokuAttackGif--visible');
               setTimeout(function(){
                 oxo.screens.loadScreen('succes', function() {
+                  oxo.inputs.cancelKeyListener('enter');
                   //script de succès ici
                 })
               } , 3000);
@@ -53,7 +73,12 @@ function checkAnswer() {
               freezerAttackGif.classList.add('gamefreezer__freezerAttackGif--visible');
               setTimeout(function(){
                 oxo.screens.loadScreen('gameover', function() {
-                  //script de succès ici
+                  
+                  oxo.inputs.listenArrowKeys(function(key){
+                    oxo.screens.loadScreen('home', function() {
+
+                    })
+                  });
                 });
               } , 3000);
             };
@@ -64,36 +89,20 @@ function checkAnswer() {
   };
 };
 
-let perso;
-let intervalWall;
-let bodyGamefreezer;
-let freezerGif;
-let gokuGif;
-let freezerAttackGif;
-let gokuAttackGif;
-let tabRecupElements = [];
-let tabAnswerUser = [];
-let obstacleSize = 100;
-let speed = 100;
-let perso1;
-let perso2;
-let howPlay;
-let appearText;
-let colectBall;
-let colisionWall;
-
 function launchGame(fly) {
   oxo.inputs.listenKey('enter', function() {
     if (oxo.screens.getCurrentScreen !== 'game') {
         oxo.inputs.cancelKeyListener('enter');
         oxo.screens.loadScreen('game',function(){
-        oxo.player.setScore(300);
-        perso = document.querySelector("#perso");
-        perso.classList.add(fly.persoClass);      
-        setInterval(timer , 1000);
+          oxo.inputs.cancelKeyListener('enter');
+          oxo.player.setScore(300);
+          perso = document.querySelector("#perso");
+          perso.classList.add(fly.persoClass);      
+          setInterval(timer , 1000);
         function timer() {
           if(oxo.player.getScore() == 0 ){
             oxo.screens.loadScreen('end', function() {
+              oxo.inputs.cancelKeyListener('enter');
               oxo.player.setScore(0);//bastien 
               clearInterval(intervalWall);
             });
@@ -127,7 +136,6 @@ function launchGame(fly) {
           oxo.elements.onLeaveScreenOnce(wall, function() {
             wall.remove();
           });
-          //console.log(wallumber);
           for(let i = 0; i < 8; i++){
             let tempIndex = oxo.utils.getRandomNumber(0, numbersTab.length-1);
             blockTab[i] = numbersTab[tempIndex];
@@ -151,7 +159,6 @@ function launchGame(fly) {
                 let leftValue;
                 let rightValue;
                 
-                // console.log(bonus.className)
                 if(bonus.className === 'game__bonus game__bonus--up'){
                   upValue = 'up';
                   if(tabRecupElements.length < 7){
@@ -195,14 +202,11 @@ function launchGame(fly) {
               });
               oxo.elements.onCollisionWithElementOnce(perso, obstacle , function() {
 
-                colisionWall = document.getElementById('colision');
-                colisionWall.play();
-
                 oxo.screens.loadScreen('game', function() {
+                  oxo.inputs.cancelKeyListener('enter');
                   perso = document.querySelector("#perso");
+                  perso.classList.add(fly.persoClass);
                   tabRecupElements = [];
-                  perso = document.querySelector("#perso");
-                  perso.classList.add(fly.persoClass); 
                 });
               });
             };
@@ -218,10 +222,10 @@ oxo.screens.loadScreen('home', function() {
   
   howPlay = document.getElementById('howPlay');
   appearText = document.getElementById('appearText');
+  perso1 = document.getElementById('perso1');
+  perso2 = document.getElementById('perso2');
   
   oxo.inputs.listenArrowKeys(function(key) {
-    perso1 = document.getElementById('perso1');
-    perso2 = document.getElementById('perso2');
     if(key === "down"){
       appearText.classList.toggle('is-clicked');
     }
