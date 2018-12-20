@@ -6,8 +6,22 @@
   }
 }
 
-body{
+@-webkit-keyframes backgroundScroll {
+  from {background-position: 0 0;}
+  to {background-position: -999999px 0;}
+}
+
+@keyframes backgroundScroll {
+  from {background-position: 0 0;}
+  to {background-position: -999999px 0;}
+}
+
+.game{
+  width: 100vw;
+  height: 100vh;
   background-image: url('/pictures/Game.jpg');
+  -webkit-animation: backgroundScroll 9999s linear infinite;
+  animation: backgroundScroll 9999s linear infinite;
 }
 
 .game__square {
@@ -80,3 +94,4 @@ body{
 .game__music{
   position: absolute;
 }
+

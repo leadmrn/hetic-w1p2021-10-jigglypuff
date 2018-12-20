@@ -1,30 +1,98 @@
+function checkAnswer() {
+  if(tabRecupElements.length === 7){
+    oxo.screens.loadScreen('gamefreezer', function() {
+      gokuGif = document.getElementById('gokuGif');
+      freezerGif = document.getElementById('freezerGif');
+      freezerAttackGif = document.getElementById('freezerAttackGif');
+      gokuAttackGif = document.getElementById('gokuAttackGif');
+      clearInterval(intervalWall);
+      oxo.inputs.listenArrowKeys(function(key) {
+        if(key === 'up'){
+          oxo.elements.createElement({
+            type: 'div',
+            class: 'gamefreezer__imgCombinaison gamefreezer__imgCombinaison--up',
+            appendTo: '#divv',
+          });
+        }
+        if(key === 'down'){
+          oxo.elements.createElement({
+            type: 'div',
+            class: 'gamefreezer__imgCombinaison gamefreezer__imgCombinaison--down',
+            appendTo: '#divv',
+          });
+        }
+        if(key === 'left'){
+          oxo.elements.createElement({
+            type: 'div',
+            class: 'gamefreezer__imgCombinaison gamefreezer__imgCombinaison--left',
+            appendTo: '#divv',
+          });
+        }
+        if(key === 'right'){
+          oxo.elements.createElement({
+            type: 'div',
+            class: 'gamefreezer__imgCombinaison gamefreezer__imgCombinaison--right',
+            appendTo: '#divv',
+          });
+        }
+
+        if(tabAnswerUser.length < 7){
+          tabAnswerUser.push(key);
+          console.log(tabAnswerUser);
+          if (tabAnswerUser.length == 7) {
+            if(tabAnswerUser.join("") == tabRecupElements.join("")) {
+              gokuGif.remove();
+              gokuAttackGif.classList.add('gamefreezer__gokuAttackGif--visible');
+              setTimeout(function(){
+                oxo.screens.loadScreen('succes', function() {
+                  //script de succès ici
+                })
+              } , 3000);
+            } else {
+              freezerGif.remove();
+              freezerAttackGif.classList.add('gamefreezer__freezerAttackGif--visible');
+              setTimeout(function(){
+                oxo.screens.loadScreen('gameover', function() {
+                  //script de succès ici
+                });
+              } , 3000);
+            };
+          };
+        };
+      });
+    });
+  };
+};
+
 let goku;
 let intervalWall;
+let bodyGamefreezer;
+let freezerGif;
+let gokuGif;
+let freezerAttackGif;
+let gokuAttackGif;
+let tabRecupElements = [];
+let tabAnswerUser = [];
+let obstacleSize = 100;
+let speed = 100;
 
 oxo.inputs.listenKey('enter', function() {
   if (oxo.screens.getCurrentScreen !== 'game') {
       oxo.inputs.cancelKeyListener('enter');
       oxo.screens.loadScreen('game',function(){
-      let tabRecupElements = [];
-      let tabAnswerUser = [];
-
-      let obstacleSize = 100;
-      let speed = 100;
-      goku = document.querySelector(".game__square");
-      
-      
-      let timerInterval = setInterval(timer , 1000);
-
+      oxo.player.setScore(300);
+      goku = document.querySelector(".game__square");      
+      setInterval(timer , 1000);
       function timer() {
-        if(oxo.player.getScore() === 10 ){
-          oxo.screens.loadScreen('end');
+        if(oxo.player.getScore() == 0 ){
+          oxo.screens.loadScreen('end', function() {
+            oxo.player.setScore(0);//bastien 
+            clearInterval(intervalWall);
+          });
         }else{
-          oxo.player.addToScore(1);
+          oxo.player.removeFromScore(1);
         };
-      }; 
-
-      
-      
+      };
       let wallNumber = 1;
       intervalWall = setInterval(addWall, speed*20);
       
@@ -78,30 +146,7 @@ oxo.inputs.listenKey('enter', function() {
                 if(tabRecupElements.length < 7){
                   tabRecupElements.push(upValue);
                   console.log(tabRecupElements);
-                  if(tabRecupElements.length === 7){
-                    oxo.screens.loadScreen('gamefreezer', function() { 
-                      clearInterval(intervalWall);           
-                      oxo.inputs.listenArrowKeys(function(key) {
-                        if(tabAnswerUser.length < 7){
-                          tabAnswerUser.push(key);
-                          console.log(tabAnswerUser);
-                          if (tabAnswerUser.length == 7) {
-                            if(tabAnswerUser.join("") == tabRecupElements.join("")) {
-                              oxo.player.getScore();
-                              oxo.screens.loadScreen('succes', function() {
-                                //script de succès ici
-                              })
-                            } else {
-                              oxo.screens.loadScreen('gameover', function() {
-                                //script de gameover ici
-                              })
-                            }
-                          }
-                          
-                        };
-                      });
-                    });
-                  };
+                  checkAnswer();
                 };
               };
               if(bonus.className == 'game__bonus game__bonus--down'){
@@ -109,28 +154,7 @@ oxo.inputs.listenKey('enter', function() {
                 if(tabRecupElements.length < 7){
                   tabRecupElements.push(downValue);
                   console.log(tabRecupElements);
-                  if(tabRecupElements.length === 7){
-                    oxo.screens.loadScreen('gamefreezer', function() {
-                      clearInterval(intervalWall);
-                      oxo.inputs.listenArrowKeys(function(key) {
-                        if(tabAnswerUser.length < 7){
-                          tabAnswerUser.push(key);
-                          console.log(tabAnswerUser);
-                          if (tabAnswerUser.length == 7) {
-                            if(tabAnswerUser.join("") == tabRecupElements.join("")) {
-                              oxo.screens.loadScreen('succes', function() {
-                                //script de succès ici
-                              })
-                            } else {
-                              oxo.screens.loadScreen('gameover', function() {
-                                //script de gameover ici
-                              })
-                            }
-                          }
-                        };
-                      });
-                    });
-                  };
+                  checkAnswer();
                 };
               };
               if(bonus.className == 'game__bonus game__bonus--left'){
@@ -138,28 +162,7 @@ oxo.inputs.listenKey('enter', function() {
                 if(tabRecupElements.length < 7){
                   tabRecupElements.push(leftValue);
                   console.log(tabRecupElements);
-                  if(tabRecupElements.length === 7){
-                    oxo.screens.loadScreen('gamefreezer', function() {
-                      clearInterval(intervalWall);
-                      oxo.inputs.listenArrowKeys(function(key) {
-                        if(tabAnswerUser.length < 7){
-                          tabAnswerUser.push(key);
-                          console.log(tabAnswerUser);
-                          if (tabAnswerUser.length == 7) {
-                            if(tabAnswerUser.join("") == tabRecupElements.join("")) {
-                              oxo.screens.loadScreen('succes', function() {
-                                //script de succès ici
-                              })
-                            } else {
-                              oxo.screens.loadScreen('gameover', function() {
-                                //script de gameover ici
-                              })
-                            }
-                          }
-                        };
-                      });
-                    });
-                  };
+                  checkAnswer();
                 };
               };
               if(bonus.className == 'game__bonus game__bonus--right'){
@@ -167,32 +170,10 @@ oxo.inputs.listenKey('enter', function() {
                 if(tabRecupElements.length < 7){
                   tabRecupElements.push(rightValue);
                   console.log(tabRecupElements);
-                  if(tabRecupElements.length === 7){
-                    oxo.screens.loadScreen('gamefreezer', function() {
-                      clearInterval(intervalWall);
-                      oxo.inputs.listenArrowKeys(function(key) {
-                        if(tabAnswerUser.length < 7){
-                          tabAnswerUser.push(key);
-                          console.log(tabAnswerUser);
-                          if (tabAnswerUser.length == 7) {
-                            if(tabAnswerUser.join("") == tabRecupElements.join("")) {
-                              oxo.screens.loadScreen('succes', function() {
-                                //script de succès ici
-                              })
-                            } else {
-                              oxo.screens.loadScreen('gameover', function() {
-                                //script de gameover ici
-                              })
-                            }
-                          }
-                        };
-                      });
-                    });
-                  };
+                  checkAnswer();
                 };
               };
             });
-
           }else{
             let obstacle = oxo.elements.createElement({
               class: 'game__obstacle',
@@ -214,4 +195,3 @@ oxo.inputs.listenKey('enter', function() {
     }); 
   };
 });
-
