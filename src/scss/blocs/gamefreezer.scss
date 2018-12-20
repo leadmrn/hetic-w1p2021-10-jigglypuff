@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+.gamefreezer{
+  background-image: url('/pictures/BackgroundHome.png');
+}
+
+.gamefreezer__instruction{
+  font-size: 30px;
+  line-height: 60px;
+  font-family: 'Press Start 2P';
+  margin: 40px;
+  text-align: center;
+}
+
+.gamefreezer__textCombinaison{
+  font-size: 20px;
+  font-family: 'Press Start 2P';
+  margin: 40px;
+  text-align: center;
+}
+
+.gamefreezer__combinaison{
+  margin: 40px auto 0 auto;
+  display: flex;
+  flex-direction: row;
+  width: 700px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.gamefreezer__imgCombinaison{
+  height: 100px;
+  width: 100px;
+}
+
+.gamefreezer__imgCombinaison--up{
+  background-image: url('/pictures/Cristalballup.png');
+}
+
+.gamefreezer__imgCombinaison--down{
+  background-image: url('/pictures/Cristalballdown.png');
+}
+
+.gamefreezer__imgCombinaison--right{
+  background-image: url('/pictures/cristalball.png');
+}
+
+.gamefreezer__imgCombinaison--left{
+  background-image: url('/pictures/Cristalballleft.png');
+}
+
+.gamefreezer__gokuGif{
+  position: absolute;
+  bottom: 40px;
+  left: 200px;
+  height: 200px;
+}
+
+.gamefreezer__freezerGif{
+  position: absolute;
+  bottom: 40px;
+  right: 200px;
+  height: 200px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.gamefreezer__freezerAttackGif{
+  height: 400px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  bottom: 25px;
+  right: 200px;
+  position: absolute;
+}
+
+.gamefreezer__freezerAttackGif--invisible {
+  display: none;
+}
+
+.gamefreezer__freezerAttackGif--visible {
+  display: initial;
+}
+
+.gamefreezer__gokuAttackGif {
+  height: 550px;
+  position: absolute;
+  bottom: -100px;
+  left: 200px;
+}
+
+.gamefreezer__gokuAttackGif--invisible{
+  display: none;
+}
+
+.gamefreezer__gokuAttackGif--visible{
+  display: initial;
+}
+
