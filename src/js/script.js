@@ -230,9 +230,17 @@ oxo.screens.loadScreen('home', function() {
       appearText.classList.toggle('is-clicked');
     }
     if(key === "left"){
+      if(perso2.className = 'selectPerso__perso2 border-vegeta'){
+        perso2.classList.remove('border-vegeta');
+      }
+      perso1.classList.add('border-goku');
       launchGame({persoClass: "game__square--goku"});
     }
     if(key === 'right'){
+      if(perso1.className = 'selectPerso__perso1 border-goku'){
+        perso1.classList.remove('border-goku');
+      }
+      perso2.classList.add('border-vegeta');
       launchGame({persoClass: "game__square--vegeta"});
     }
   });
