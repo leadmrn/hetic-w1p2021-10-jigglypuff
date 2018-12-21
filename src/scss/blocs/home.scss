@@ -41,6 +41,10 @@
   position: absolute;
   bottom: 250px;
   left: 300px;
+
+  &.border-goku{
+    border: 6px solid orange;
+  }
 }
 
 .selectPerso__perso2{
@@ -53,6 +57,10 @@
   right: 300px;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+
+  &.border-vegeta{
+    border: 6px solid orange;
+  }
 }
 
 .instructions__button{
